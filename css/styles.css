@@ -1,0 +1,220 @@
+/* ===== Base styles ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: #222831;
+    background-color: #f4f6f8;
+}
+
+h1, h2, h3 {
+    color: #1b3a57;
+    font-family: 'Georgia', serif;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #1b3a57;
+    padding-bottom: 0.3rem;
+}
+
+p {
+    max-width: 800px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+video, audio {
+    max-width: 100%;
+}
+/* ===== Header ===== */
+header {
+    background-color: #1b3a57;
+    color: #ffffff;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+header h1 {
+    color: #ffffff;
+    margin: 0;
+}
+
+/* ===== Navigation ===== */
+nav {
+    background-color: #274b6d;
+    padding: 0.8rem;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: #3d6d99;
+    text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+footer {
+    background-color: #1b3a57;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+/* ===== Main content sections ===== */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.content-section {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid #c5d0da;
+    border-radius: 6px;
+}
+
+/* Unique styling for one section (id selector) */
+#about {
+    background-color: #eef4fa;
+}
+
+/* ===== Photo gallery ===== */
+#photos figure {
+    display: inline-block;
+    width: 250px;
+    margin: 0.8rem;
+    text-align: center;
+    vertical-align: top;
+}
+
+#photos img {
+    border: 2px solid #1b3a57;
+    border-radius: 4px;
+}
+
+#photos figcaption {
+    font-size: 0.9rem;
+    color: #444;
+    margin-top: 0.4rem;
+}
+
+/* ===== Table ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+caption {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #1b3a57;
+}
+
+th, td {
+    border: 1px solid #c5d0da;
+    padding: 0.6rem;
+    text-align: left;
+}
+
+th {
+    background-color: #1b3a57;
+    color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f4f6f8;
+}
+/* ===== Form ===== */
+form div {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: #1b3a57;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem;
+    border: 1px solid #c5d0da;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #1b3a57;
+    box-shadow: 0 0 0 2px rgba(27, 58, 87, 0.2);
+}
+
+button[type="submit"] {
+    background-color: #1b3a57;
+    color: #ffffff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+    background-color: #3d6d99;
+}
+
+/* ===== Small screens ===== */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #photos figure {
+        width: 100%;
+        max-width: 300px;
+    }
+}

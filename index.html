@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Web Page</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Maximino Phiri – My Student Website</h1>
+    </header>
+
+    <nav>
+        
+    <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#hobbies">My Hobbies</a></li>
+        <li><a href="#learning-plan">My Learning Plan</a></li>
+        <li><a href="#photos">My Photos</a></li>
+        <li><a href="#media">My Media</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Learn" target="_blank">Learn Web Development on MDN</a></li>
+    </ul>
+
+    </nav>
+
+    <main>
+        <section id="about" class="content-section">
+    <h2>About Me</h2>
+    <p>
+        Hi everyone! I'm Maximino Phiri. I am currently in my second year pursuing 
+        a Computer Science degree at Mulungushi University. Ever since starting my 
+        tech journey, I've been fascinated by user-software interaction. That's why 
+        I'm aiming to be a Front-End Developer, currently focusing on HTML, CSS, 
+        and JavaScript. Thanks for your time!
+    </p>
+</section>
+
+        <section id="hobbies" class="content-section">
+    <h2>My Hobbies</h2>
+    <ul>
+        <li>Reading</li>
+        <li>Programming</li>
+        <li>Football</li>
+    </ul>
+    </section>
+
+        <section id="learning-plan" class="content-section">
+    <h2>My Learning Plan</h2>
+    <ol>
+        <li>Practice building small HTML and CSS projects every week.</li>
+        <li>Learn JavaScript fundamentals to add interactivity to my pages.</li>
+        <li>Study responsive design so my websites look good on any screen size.</li>
+    </ol>
+
+    <table>
+        <caption>My Weekly Web Learning Plan</caption>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Topic</th>
+                <th>Practice Task</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Monday</td>
+                <td>HTML Structure</td>
+                <td>Build a semantic layout with header, nav, main, footer</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>CSS Styling</td>
+                <td>Style a page using classes, ids, and a color palette</td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>JavaScript Basics</td>
+                <td>Write a simple script to change text on button click</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+        <section id="photos" class="content-section">
+    <h2>My Photos</h2>
+
+    <figure>
+        <img src="images/photo1.jpeg" alt="Maximino sitting at a desk working on a laptop">
+        <figcaption>Me working on a coding assignment at home.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/photo2.jpeg" alt="A football pitch at Mulungushi University">
+        <figcaption>The football pitch where I play with friends on weekends.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="images/photo3.jpeg" alt="A stack of books on a study desk">
+        <figcaption>Some of the books I enjoy reading in my free time.</figcaption>
+    </figure>
+
+</section>
+
+      <section id="media" class="content-section">
+    <h2>My Media</h2>
+
+    <h3>Introduction Video</h3>
+    <video controls>
+        <source src="videos/intro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <p>In this video, I introduce myself as Maximino Phiri, a second-year Computer Science 
+    student at Mulungushi University, and share that I hope to improve my JavaScript skills.</p>
+
+    <h3>Audio Clip</h3>
+    <audio controls>
+        <source src="videos/voice.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+    <p>In this recording, I talk about why I enjoy programming and how it led me to pursue 
+    a career as a Front-End Developer.</p>
+</section>
+
+        <section id="contact" class="content-section">
+   <section id="contact">
+    <h2>Contact</h2>
+    <p>This form is for demonstration only. It does not send data anywhere.</p>
+
+    <form action="#">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Maximino Phiri" required>
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="e.g. maximinophiri44@gmail.com" required>
+        </div>
+
+        <div>
+            <label for="topic">Topic:</label>
+            <select id="topic" name="topic">
+                <option value="general">General Inquiry</option>
+                <option value="feedback">Feedback</option>
+                <option value="collaboration">Collaboration</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Send Message</button>
+        </div>
+    </form>
+</section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Maximino Phiri</p>
+    </footer>
+
+</body>
+</html>
