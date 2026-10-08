@@ -1,0 +1,204 @@
+/* ==========================================================
+   Maximino Phiri - Student Portfolio
+   All JavaScript features for Activity 3
+   1. Contact form validation and preview (compulsory)
+   2. Expandable project details
+   3. Photo gallery viewer (Previous / Next)
+   4. Dark / light theme switch
+   ========================================================== */
+
+/* ---------- Feature 1: Contact form validation and preview ---------- */
+
+const form = document.getElementById("contact-form");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const topicSelect = document.getElementById("topic");
+const messageInput = document.getElementById("message");
+const preview = document.getElementById("form-preview");
+
+// Simple pattern: text, then @, then text, then a dot, then text (no spaces)
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Shows an error message under a field and marks the field as invalid
+function showError(input, message) {
+    const errorBox = document.getElementById(input.id + "-error");
+    errorBox.textContent = message;
+    input.classList.add("invalid");
+    input.setAttribute("aria-invalid", "true");
+}
+
+// Clears the error message of a field
+function clearError(input) {
+    const errorBox = document.getElementById(input.id + "-error");
+    errorBox.textContent = "";
+    input.classList.remove("invalid");
+    input.removeAttribute("aria-invalid");
+}
+
+// Checks all three fields. Returns true only when everything is valid.
+function validateForm() {
+    let isValid = true;
+    let firstInvalid = null;
+
+    // Name: reject empty or spaces-only text
+    if (nameInput.value.trim() === "") {
+        showError(nameInput, "Please enter your name (spaces only is not allowed).");
+        firstInvalid = firstInvalid || nameInput;
+        isValid = false;
+    } else {
+        clearError(nameInput);
+    }
+
+    // Email: reject empty or wrongly formatted addresses
+    if (!emailPattern.test(emailInput.value.trim())) {
+        showError(emailInput, "Please enter a valid email, for example name@example.com.");
+        firstInvalid = firstInvalid || emailInput;
+        isValid = false;
+    } else {
+        clearError(emailInput);
+    }
+
+    // Message: reject empty or spaces-only text
+    if (messageInput.value.trim() === "") {
+        showError(messageInput, "Please type a message (spaces only is not allowed).");
+        firstInvalid = firstInvalid || messageInput;
+        isValid = false;
+    } else {
+        clearError(messageInput);
+    }
+
+    // Move the cursor to the first problem so the visitor can fix it
+    if (firstInvalid) {
+        firstInvalid.focus();
+    }
+
+    return isValid;
+}
+
+// Builds one line of the preview using textContent (safe for user text)
+function addPreviewLine(label, value) {
+    const line = document.createElement("p");
+    const strong = document.createElement("strong");
+    strong.textContent = label + " ";
+    const text = document.createElement("span");
+    text.textContent = value;
+    line.appendChild(strong);
+    line.appendChild(text);
+    preview.appendChild(line);
+}
+
+// Shows the validated data on the page (nothing is sent anywhere)
+function showPreview() {
+    preview.textContent = "";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Form validated successfully";
+    preview.appendChild(heading);
+
+    const note = document.createElement("p");
+    note.textContent = "Your data was validated in the browser. No message was sent or delivered.";
+    preview.appendChild(note);
+
+    addPreviewLine("Name:", nameInput.value.trim());
+    addPreviewLine("Email:", emailInput.value.trim());
+    addPreviewLine("Topic:", topicSelect.value);
+    addPreviewLine("Message:", messageInput.value.trim());
+
+    preview.hidden = false;
+}
+
+// Runs when the form is submitted
+form.addEventListener("submit", function (event) {
+    event.preventDefault(); // keep everything local, no page reload
+
+    if (validateForm()) {
+        showPreview();
+    } else {
+        preview.hidden = true;
+        preview.textContent = "";
+    }
+});
+
+/* ---------- Feature 2: Expandable project details ---------- */
+
+const toggleButtons = document.querySelectorAll(".toggle-button");
+
+// Opens or closes the details that belong to the clicked button
+function toggleDetails(button) {
+    const details = document.getElementById(button.getAttribute("aria-controls"));
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+
+    if (isOpen) {
+        details.hidden = true;
+        button.setAttribute("aria-expanded", "false");
+        button.textContent = "Show Details";
+    } else {
+        details.hidden = false;
+        button.setAttribute("aria-expanded", "true");
+        button.textContent = "Hide Details";
+    }
+}
+
+toggleButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        toggleDetails(button);
+    });
+});
+
+/* ---------- Feature 3: Photo gallery viewer ---------- */
+
+const galleryItems = document.querySelectorAll(".gallery-item");
+const prevButton = document.getElementById("prev-photo");
+const nextButton = document.getElementById("next-photo");
+const photoCounter = document.getElementById("photo-counter");
+let currentPhoto = 0;
+
+// Shows only the photo at the given position and updates the counter
+function showPhoto(index) {
+    galleryItems.forEach(function (item, position) {
+        item.hidden = position !== index;
+    });
+    photoCounter.textContent = "Photo " + (index + 1) + " of " + galleryItems.length;
+}
+
+// Next: after the last photo, go back to the first
+nextButton.addEventListener("click", function () {
+    currentPhoto = (currentPhoto + 1) % galleryItems.length;
+    showPhoto(currentPhoto);
+});
+
+// Previous: before the first photo, go to the last
+prevButton.addEventListener("click", function () {
+    currentPhoto = (currentPhoto - 1 + galleryItems.length) % galleryItems.length;
+    showPhoto(currentPhoto);
+});
+
+showPhoto(currentPhoto);
+
+/* ---------- Feature 4: Dark / light theme switch ---------- */
+
+const themeButton = document.getElementById("theme-toggle");
+
+// Applies the chosen theme (dark is the default) and updates the button text
+function applyTheme(isLight) {
+    document.body.classList.toggle("light-theme", isLight);
+    themeButton.setAttribute("aria-pressed", String(isLight));
+    themeButton.textContent = isLight ? "Switch to Dark Theme" : "Switch to Light Theme";
+}
+
+// Load a saved preference if there is one (saving is optional, so errors are ignored)
+try {
+    applyTheme(localStorage.getItem("portfolio-theme") === "light");
+} catch (error) {
+    applyTheme(false);
+}
+
+themeButton.addEventListener("click", function () {
+    const makeLight = !document.body.classList.contains("light-theme");
+    applyTheme(makeLight);
+    try {
+        localStorage.setItem("portfolio-theme", makeLight ? "light" : "dark");
+    } catch (error) {
+        // Storage not available: the theme still works for this visit
+    }
+});

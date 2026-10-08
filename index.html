@@ -3,166 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Web Page</title>
+    <title>Maximino Phiri – Student Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Maximino Phiri – My Student Website</h1>
+    <header class="site-header">
+        <a href="#home" class="brand">MAXIMINO PHIRI</a>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#hobbies">My Hobbies</a></li>
+                <li><a href="#learning-plan">My Learning Plan</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#photos">My Photos</a></li>
+                <li><a href="#media">My Media</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <button type="button" id="theme-toggle" class="theme-button" aria-pressed="false">Switch to Light Theme</button>
     </header>
 
-    <nav>
-        
-    <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#hobbies">My Hobbies</a></li>
-        <li><a href="#learning-plan">My Learning Plan</a></li>
-        <li><a href="#photos">My Photos</a></li>
-        <li><a href="#media">My Media</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Learn" target="_blank">Learn Web Development on MDN</a></li>
-    </ul>
-
-    </nav>
-
     <main>
+        <!-- Introductory area -->
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <p class="programme">Computer Science · Mulungushi University</p>
+                <h1>Hi! I'm Maximino Phiri, learning to build <span class="accent-text">Front-End Experiences.</span></h1>
+                <p>
+                    I am a second-year Computer Science student. This website shows what I
+                    have learned so far in HTML, CSS and JavaScript.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="button-link">View My Projects</a>
+                    <a href="#contact" class="button-link secondary">Contact Me</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/photo1.jpeg" alt="Maximino sitting at a desk working on a laptop">
+            </div>
+
+            <div class="stats">
+                <div class="stat"><strong>Year 2</strong><span>Computer Science</span></div>
+                <div class="stat"><strong>3</strong><span>Core web skills</span></div>
+                <div class="stat"><strong>3</strong><span>Favourite hobbies</span></div>
+                <div class="stat"><strong>4</strong><span>JavaScript features</span></div>
+            </div>
+        </section>
+
         <section id="about" class="content-section">
-    <h2>About Me</h2>
-    <p>
-        Hi everyone! I'm Maximino Phiri. I am currently in my second year pursuing 
-        a Computer Science degree at Mulungushi University. Ever since starting my 
-        tech journey, I've been fascinated by user-software interaction. That's why 
-        I'm aiming to be a Front-End Developer, currently focusing on HTML, CSS, 
-        and JavaScript. Thanks for your time!
-    </p>
-</section>
+            <h2>About Me</h2>
+            <p>
+                Hi everyone! I'm Maximino Phiri. I am currently in my second year pursuing
+                a Computer Science degree at Mulungushi University. Ever since starting my
+                tech journey, I've been fascinated by user-software interaction. That's why
+                I'm aiming to be a Front-End Developer, currently focusing on HTML, CSS,
+                and JavaScript. Thanks for your time!
+            </p>
+        </section>
 
         <section id="hobbies" class="content-section">
-    <h2>My Hobbies</h2>
-    <ul>
-        <li>Reading</li>
-        <li>Programming</li>
-        <li>Football</li>
-    </ul>
-    </section>
+            <h2>My Hobbies</h2>
+            <ul class="hobby-list">
+                <li>Reading</li>
+                <li>Programming</li>
+                <li>Football</li>
+            </ul>
+        </section>
 
         <section id="learning-plan" class="content-section">
-    <h2>My Learning Plan</h2>
-    <ol>
-        <li>Practice building small HTML and CSS projects every week.</li>
-        <li>Learn JavaScript fundamentals to add interactivity to my pages.</li>
-        <li>Study responsive design so my websites look good on any screen size.</li>
-    </ol>
+            <h2>My Learning Plan</h2>
+            <ol class="plan-list">
+                <li>Practice building small HTML and CSS projects every week.</li>
+                <li>Learn JavaScript fundamentals to add interactivity to my pages.</li>
+                <li>Study responsive design so my websites look good on any screen size.</li>
+            </ol>
 
-    <table>
-        <caption>My Weekly Web Learning Plan</caption>
-        <thead>
-            <tr>
-                <th>Day</th>
-                <th>Topic</th>
-                <th>Practice Task</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Monday</td>
-                <td>HTML Structure</td>
-                <td>Build a semantic layout with header, nav, main, footer</td>
-            </tr>
-            <tr>
-                <td>Wednesday</td>
-                <td>CSS Styling</td>
-                <td>Style a page using classes, ids, and a color palette</td>
-            </tr>
-            <tr>
-                <td>Friday</td>
-                <td>JavaScript Basics</td>
-                <td>Write a simple script to change text on button click</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+            <div class="table-wrap">
+                <table>
+                    <caption>My Weekly Web Learning Plan</caption>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Topic</th>
+                            <th>Practice Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td>HTML Structure</td>
+                            <td>Build a semantic layout with header, nav, main, footer</td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>CSS Styling</td>
+                            <td>Style a page using classes, ids, and a color palette</td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td>JavaScript Basics</td>
+                            <td>Write a simple script to change text on button click</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
+        <!-- Projects and Skills: expandable details -->
+        <section id="projects" class="content-section">
+            <h2>Projects and Skills</h2>
+            <p class="section-intro">Three things I have learned. Use the buttons to open or close the details.</p>
+
+            <div class="project-list">
+                <article class="project-card">
+                    <div class="icon-box" aria-hidden="true">&lt;/&gt;</div>
+                    <h3>HTML5 Structure</h3>
+                    <p>Building a well-organised page with semantic tags.</p>
+                    <button type="button" class="toggle-button" aria-expanded="false" aria-controls="details-html">Show Details</button>
+                    <div id="details-html" class="project-details" hidden>
+                        <p>I can use header, nav, main, section and footer correctly, add images with
+                        descriptive alt text, embed video and audio, and build tables and labelled forms.</p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="icon-box" aria-hidden="true">{ }</div>
+                    <h3>CSS Styling</h3>
+                    <p>Making a page look clean and work on any screen.</p>
+                    <button type="button" class="toggle-button" aria-expanded="false" aria-controls="details-css">Show Details</button>
+                    <div id="details-css" class="project-details" hidden>
+                        <p>I can use element, class and id selectors, control spacing with the box model,
+                        build layouts with Flexbox and Grid, and use media queries to adapt to phones.</p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="icon-box" aria-hidden="true">JS</div>
+                    <h3>JavaScript Basics</h3>
+                    <p>Adding interactivity to a web page.</p>
+                    <button type="button" class="toggle-button" aria-expanded="false" aria-controls="details-js">Show Details</button>
+                    <div id="details-js" class="project-details" hidden>
+                        <p>I can respond to clicks and form submissions, change page content with the DOM,
+                        validate user input, and use functions, variables and arrays.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Photos: gallery viewer -->
         <section id="photos" class="content-section">
-    <h2>My Photos</h2>
+            <h2>My Photos</h2>
 
-    <figure>
-        <img src="images/photo1.jpeg" alt="Maximino sitting at a desk working on a laptop">
-        <figcaption>Me working on a coding assignment at home.</figcaption>
-    </figure>
+            <div class="gallery">
+                <figure class="gallery-item">
+                    <img src="images/photo1.jpeg" alt="Maximino sitting at a desk working on a laptop">
+                    <figcaption>Me working on a coding assignment at home.</figcaption>
+                </figure>
 
-    <figure>
-        <img src="images/photo2.jpeg" alt="A football pitch at Mulungushi University">
-        <figcaption>The football pitch where I play with friends on weekends.</figcaption>
-    </figure>
+                <figure class="gallery-item" hidden>
+                    <img src="images/photo2.jpeg" alt="A football pitch at Mulungushi University">
+                    <figcaption>The football pitch where I play with friends on weekends.</figcaption>
+                </figure>
 
-    <figure>
-        <img src="images/photo3.jpeg" alt="A stack of books on a study desk">
-        <figcaption>Some of the books I enjoy reading in my free time.</figcaption>
-    </figure>
+                <figure class="gallery-item" hidden>
+                    <img src="images/photo3.jpeg" alt="A stack of books on a study desk">
+                    <figcaption>Some of the books I enjoy reading in my free time.</figcaption>
+                </figure>
+            </div>
 
-</section>
+            <div class="gallery-controls">
+                <button type="button" id="prev-photo">Previous</button>
+                <span id="photo-counter" aria-live="polite">Photo 1 of 3</span>
+                <button type="button" id="next-photo">Next</button>
+            </div>
+        </section>
 
-      <section id="media" class="content-section">
-    <h2>My Media</h2>
+        <section id="media" class="content-section">
+            <h2>My Media</h2>
 
-    <h3>Introduction Video</h3>
-    <video controls>
-        <source src="videos/intro.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <p>In this video, I introduce myself as Maximino Phiri, a second-year Computer Science 
-    student at Mulungushi University, and share that I hope to improve my JavaScript skills.</p>
+            <div class="media-item">
+                <h3>Introduction Video</h3>
+                <video controls preload="metadata">
+                    <source src="videos/intro.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>In this video, I introduce myself as Maximino Phiri, a second-year Computer Science
+                student at Mulungushi University, and share that I hope to improve my JavaScript skills.</p>
+            </div>
 
-    <h3>Audio Clip</h3>
-    <audio controls>
-        <source src="videos/voice.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-    </audio>
-    <p>In this recording, I talk about why I enjoy programming and how it led me to pursue 
-    a career as a Front-End Developer.</p>
-</section>
+            <div class="media-item">
+                <h3>Audio Clip</h3>
+                <audio controls preload="metadata">
+                    <source src="videos/voice.mp3" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+                <p>In this recording, I talk about why I enjoy programming and how it led me to pursue
+                a career as a Front-End Developer.</p>
+            </div>
+        </section>
 
         <section id="contact" class="content-section">
-   <section id="contact">
-    <h2>Contact</h2>
-    <p>This form is for demonstration only. It does not send data anywhere.</p>
+            <h2>Contact</h2>
+            <p class="demo-note"><strong>Browser demonstration only — no message is sent.</strong></p>
 
-    <form action="#">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="e.g. Maximino Phiri" required>
-        </div>
+            <form id="contact-form" action="#" novalidate>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="e.g. Maximino Phiri" required>
+                    <span class="error-message" id="name-error" role="alert"></span>
+                </div>
 
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="e.g. maximinophiri44@gmail.com" required>
-        </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="e.g. maximinophiri44@gmail.com" required>
+                    <span class="error-message" id="email-error" role="alert"></span>
+                </div>
 
-        <div>
-            <label for="topic">Topic:</label>
-            <select id="topic" name="topic">
-                <option value="general">General Inquiry</option>
-                <option value="feedback">Feedback</option>
-                <option value="collaboration">Collaboration</option>
-            </select>
-        </div>
+                <div>
+                    <label for="topic">Topic:</label>
+                    <select id="topic" name="topic">
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="Collaboration">Collaboration</option>
+                    </select>
+                </div>
 
-        <div>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
-        </div>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+                    <span class="error-message" id="message-error" role="alert"></span>
+                </div>
 
-        <div>
-            <button type="submit">Send Message</button>
-        </div>
-    </form>
-</section>
+                <div>
+                    <button type="submit">Validate and Preview</button>
+                </div>
+            </form>
+
+            <div id="form-preview" class="form-preview" aria-live="polite" hidden></div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2026 Maximino Phiri</p>
+        <p>
+            <a href="https://github.com/mino112005/myweb" target="_blank" rel="noopener">View Source on GitHub</a>
+            ·
+            <a href="https://developer.mozilla.org/en-US/docs/Learn" target="_blank" rel="noopener">Learn Web Development on MDN</a>
+        </p>
     </footer>
-
 </body>
 </html>
