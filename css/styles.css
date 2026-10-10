@@ -1,4 +1,4 @@
-/* ===== Colour palette (light is the default, like the design) ===== */
+/* ===== Colour palette (light is the default) ===== */
 :root {
     --bg: #f4f6fb;
     --header-bg: #ffffff;
@@ -91,7 +91,7 @@ video, audio {
     max-width: 100%;
 }
 
-/* Text only for screen readers (labels for the search box) */
+/* Text only for screen readers (label for the search box) */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -150,14 +150,17 @@ textarea:focus-visible {
     gap: 0.7rem;
 }
 
+/* Theme button and menu button have the same height */
 .theme-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.4rem;
+    height: 44px;
     background-color: var(--primary);
     color: var(--on-primary);
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0 1.1rem;
     border-radius: 999px;
     font-size: 0.95rem;
     font-weight: 700;
@@ -277,6 +280,7 @@ textarea:focus-visible {
     margin: 0 0 1.4rem 0;
 }
 
+/* Hero buttons: same size, side by side */
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -284,10 +288,14 @@ textarea:focus-visible {
 }
 
 .button-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 170px;
     background-color: var(--primary);
     color: #ffffff;
     font-weight: 700;
+    text-align: center;
     text-decoration: none;
     padding: 0.8rem 1.6rem;
     border-radius: 12px;
@@ -435,9 +443,10 @@ tr:nth-child(even) {
     background-color: var(--surface-2);
 }
 
-/* ===== Search box and category pills ===== */
+/* ===== Search box and category buttons ===== */
 .search-box {
     display: flex;
+    align-items: stretch;
     gap: 0.6rem;
     max-width: 520px;
     margin: 0 auto 1rem auto;
@@ -449,6 +458,7 @@ tr:nth-child(even) {
 }
 
 .reset-button {
+    min-width: 100px;
     background-color: var(--primary);
     color: var(--on-primary);
     border: none;
@@ -472,6 +482,8 @@ tr:nth-child(even) {
 }
 
 .pill {
+    min-width: 105px;
+    text-align: center;
     background-color: transparent;
     color: var(--accent-text);
     border: 1.5px solid var(--primary);
@@ -497,24 +509,28 @@ tr:nth-child(even) {
     font-weight: 700;
 }
 
-/* ===== Project cards ===== */
+/* ===== Project cards: same layout, buttons line up ===== */
 .project-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1rem;
     margin-top: 1.2rem;
     align-items: start;
 }
 
 .project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     background-color: var(--surface-2);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 1.2rem;
+    padding: 1.4rem 1.2rem;
 }
 
 .project-card h3 {
-    margin: 0.7rem 0 0.4rem 0;
+    margin: 0.8rem 0 0.4rem 0;
 }
 
 .icon-box {
@@ -522,6 +538,7 @@ tr:nth-child(even) {
     height: 60px;
     display: grid;
     place-items: center;
+    margin: 0 auto;
     background-color: var(--surface);
     border: 1.5px solid var(--primary);
     border-radius: 12px;
@@ -531,11 +548,20 @@ tr:nth-child(even) {
     font-weight: 700;
 }
 
+/* Fixed space for the description so every button sits at the same height */
+.project-summary {
+    width: 100%;
+    min-height: 4.8em;
+    margin: 0 0 1rem 0;
+}
+
 .toggle-button {
+    width: 100%;
+    max-width: 200px;
     background-color: var(--primary);
     color: var(--on-primary);
     border: none;
-    padding: 0.5rem 1.1rem;
+    padding: 0.65rem 1rem;
     border-radius: 10px;
     font-size: 0.95rem;
     font-weight: 600;
@@ -547,6 +573,8 @@ tr:nth-child(even) {
 }
 
 .project-details {
+    width: 100%;
+    text-align: left;
     margin-top: 0.8rem;
     padding-top: 0.6rem;
     border-top: 1px solid var(--border);
@@ -586,6 +614,7 @@ tr:nth-child(even) {
 }
 
 .gallery-controls button {
+    min-width: 110px;
     background-color: var(--primary);
     color: var(--on-primary);
     border: none;
@@ -598,6 +627,11 @@ tr:nth-child(even) {
 
 .gallery-controls button:hover {
     background-color: var(--primary-hover);
+}
+
+#photo-counter {
+    min-width: 110px;
+    text-align: center;
 }
 
 /* ===== Media ===== */
@@ -690,6 +724,7 @@ textarea.invalid {
 }
 
 button[type="submit"] {
+    min-width: 200px;
     background-color: var(--primary);
     color: var(--on-primary);
     border: none;
@@ -768,6 +803,15 @@ footer p {
         justify-content: center;
     }
 
+    .hero-buttons .button-link {
+        flex: 1 1 140px;
+        min-width: 0;
+    }
+
+    .project-summary {
+        min-height: 0;
+    }
+
     h2 {
         font-size: 1.6rem;
     }
@@ -793,87 +837,12 @@ footer p {
     .search-box {
         flex-wrap: wrap;
     }
-}
 
-/* ===== Neat, aligned buttons ===== */
-
-/* Project cards: same layout, centred, buttons line up */
-.project-list {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    align-items: start;
-}
-
-.project-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.project-card .icon-box {
-    margin: 0 auto;
-}
-
-.project-summary {
-    width: 100%;
-    min-height: 3.2em;
-    margin: 0 0 1rem 0;
-}
-
-.toggle-button {
-    width: 100%;
-    max-width: 200px;
-    padding: 0.65rem 1rem;
-}
-
-.project-details {
-    width: 100%;
-    text-align: left;
-}
-
-/* Category buttons: same width, centred text */
-.filter-bar .pill {
-    min-width: 100px;
-    text-align: center;
-}
-
-/* Search box and Reset button: same height and tidy size */
-.search-box {
-    align-items: stretch;
-}
-
-.reset-button {
-    min-width: 100px;
-}
-
-/* Gallery buttons and counter */
-.gallery-controls button {
-    min-width: 110px;
-}
-
-#photo-counter {
-    min-width: 110px;
-    text-align: center;
-}
-
-/* Hero buttons: same width */
-.hero-buttons .button-link {
-    min-width: 170px;
-    text-align: center;
-}
-
-/* Header: theme button and menu button same height */
-.theme-button {
-    height: 44px;
-    justify-content: center;
-}
-
-@media (max-width: 700px) {
-    .project-summary {
-        min-height: 0;
+    .search-box input {
+        flex: 1 1 100%;
     }
 
-    .hero-buttons .button-link {
-        flex: 1 1 140px;
+    .reset-button {
+        flex: 1 1 100%;
     }
 }
