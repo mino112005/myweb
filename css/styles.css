@@ -794,3 +794,86 @@ footer p {
         flex-wrap: wrap;
     }
 }
+
+/* ===== Neat, aligned buttons ===== */
+
+/* Project cards: same layout, centred, buttons line up */
+.project-list {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: start;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.project-card .icon-box {
+    margin: 0 auto;
+}
+
+.project-summary {
+    width: 100%;
+    min-height: 3.2em;
+    margin: 0 0 1rem 0;
+}
+
+.toggle-button {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.65rem 1rem;
+}
+
+.project-details {
+    width: 100%;
+    text-align: left;
+}
+
+/* Category buttons: same width, centred text */
+.filter-bar .pill {
+    min-width: 100px;
+    text-align: center;
+}
+
+/* Search box and Reset button: same height and tidy size */
+.search-box {
+    align-items: stretch;
+}
+
+.reset-button {
+    min-width: 100px;
+}
+
+/* Gallery buttons and counter */
+.gallery-controls button {
+    min-width: 110px;
+}
+
+#photo-counter {
+    min-width: 110px;
+    text-align: center;
+}
+
+/* Hero buttons: same width */
+.hero-buttons .button-link {
+    min-width: 170px;
+    text-align: center;
+}
+
+/* Header: theme button and menu button same height */
+.theme-button {
+    height: 44px;
+    justify-content: center;
+}
+
+@media (max-width: 700px) {
+    .project-summary {
+        min-height: 0;
+    }
+
+    .hero-buttons .button-link {
+        flex: 1 1 140px;
+    }
+}
