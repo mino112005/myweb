@@ -5,6 +5,8 @@
    2. Expandable project details
    3. Photo gallery viewer (Previous / Next)
    4. Dark / light theme switch
+   5. Project search and category filter
+   6. Corner menu (open / close)
    ========================================================== */
 
 /* ---------- Feature 1: Contact form validation and preview ---------- */
@@ -178,27 +180,133 @@ showPhoto(currentPhoto);
 /* ---------- Feature 4: Dark / light theme switch ---------- */
 
 const themeButton = document.getElementById("theme-toggle");
+const themeIcon = themeButton.querySelector(".theme-icon");
+const themeLabel = themeButton.querySelector(".theme-label");
 
-// Applies the chosen theme (dark is the default) and updates the button text
-function applyTheme(isLight) {
-    document.body.classList.toggle("light-theme", isLight);
-    themeButton.setAttribute("aria-pressed", String(isLight));
-    themeButton.textContent = isLight ? "Switch to Dark Theme" : "Switch to Light Theme";
+// Applies the chosen theme (light is the default) and updates the button
+function applyTheme(isDark) {
+    document.body.classList.toggle("dark-theme", isDark);
+    themeIcon.textContent = isDark ? "☀️" : "🌙";
+    themeLabel.textContent = isDark ? "Light Mode" : "Dark Mode";
+    themeButton.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
 }
 
 // Load a saved preference if there is one (saving is optional, so errors are ignored)
 try {
-    applyTheme(localStorage.getItem("portfolio-theme") === "light");
+    applyTheme(localStorage.getItem("portfolio-theme-v2") === "dark");
 } catch (error) {
     applyTheme(false);
 }
 
 themeButton.addEventListener("click", function () {
-    const makeLight = !document.body.classList.contains("light-theme");
-    applyTheme(makeLight);
+    const makeDark = !document.body.classList.contains("dark-theme");
+    applyTheme(makeDark);
     try {
-        localStorage.setItem("portfolio-theme", makeLight ? "light" : "dark");
+        localStorage.setItem("portfolio-theme-v2", makeDark ? "dark" : "light");
     } catch (error) {
         // Storage not available: the theme still works for this visit
+    }
+});
+
+/* ---------- Feature 5: Project search and category filter ---------- */
+
+const projectCards = document.querySelectorAll(".project-card");
+const searchInput = document.getElementById("project-search");
+const categoryButtons = document.querySelectorAll(".pill");
+const resetButton = document.getElementById("reset-filters");
+const filterStatus = document.getElementById("filter-status");
+const noResults = document.getElementById("no-results");
+let activeCategory = "all";
+
+// Shows only the cards that match the chosen category and the search words
+function applyFilters() {
+    const query = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    projectCards.forEach(function (card) {
+        const categories = card.dataset.category.split(" ");
+        const searchableText = (
+            card.querySelector("h3").textContent + " " +
+            card.querySelector(".project-summary").textContent + " " +
+            card.dataset.category
+        ).toLowerCase();
+
+        const matchesCategory = activeCategory === "all" || categories.includes(activeCategory);
+        const matchesText = searchableText.includes(query);
+        const show = matchesCategory && matchesText;
+
+        card.hidden = !show;
+        if (show) {
+            visibleCount++;
+        }
+    });
+
+    // Useful message when nothing matches
+    noResults.hidden = visibleCount !== 0;
+    filterStatus.textContent = "Showing " + visibleCount + " of " + projectCards.length + " projects";
+}
+
+// Marks the chosen category button as pressed
+function setActiveCategory(category) {
+    activeCategory = category;
+    categoryButtons.forEach(function (button) {
+        button.setAttribute("aria-pressed", String(button.dataset.filter === category));
+    });
+}
+
+categoryButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        setActiveCategory(button.dataset.filter);
+        applyFilters();
+    });
+});
+
+// Filter while typing
+searchInput.addEventListener("input", applyFilters);
+
+// Reset: show everything again
+resetButton.addEventListener("click", function () {
+    searchInput.value = "";
+    setActiveCategory("all");
+    applyFilters();
+});
+
+applyFilters();
+
+/* ---------- Feature 6: Corner menu ---------- */
+
+const menuButton = document.getElementById("menu-toggle");
+const siteMenu = document.getElementById("site-menu");
+
+// Opens or closes the menu and updates the button state
+function setMenu(open) {
+    siteMenu.hidden = !open;
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+}
+
+menuButton.addEventListener("click", function () {
+    setMenu(siteMenu.hidden);
+});
+
+// Close the menu after choosing a link
+siteMenu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+        setMenu(false);
+    });
+});
+
+// Close the menu with the Escape key
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !siteMenu.hidden) {
+        setMenu(false);
+        menuButton.focus();
+    }
+});
+
+// Close the menu when clicking anywhere outside it
+document.addEventListener("click", function (event) {
+    if (!siteMenu.hidden && !siteMenu.contains(event.target) && !menuButton.contains(event.target)) {
+        setMenu(false);
     }
 });
