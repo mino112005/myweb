@@ -262,7 +262,10 @@ categoryButtons.forEach(function (button) {
 });
 
 // Filter while typing
-searchInput.addEventListener("input", applyFilters);
+searchInput.addEventListener("input", function () {
+    setActiveCategory("all"); // search looks at every skill
+    applyFilters();
+});
 
 // Reset: show everything again
 resetButton.addEventListener("click", function () {
